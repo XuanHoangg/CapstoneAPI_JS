@@ -27,27 +27,22 @@ function getProducts(searchType) {
 function display(products) {
     let output = products.reduce((result, product, index) => {
         return result + `
-        <div class="product">
-        <div class="thumbnail">
-            <img src="${product.image}"
-                class="image">
-        </div>
-        <div class="info">    
+        <div class="card">
+            <div class="card-header">
+                <img src="${product.image}" class="image">  
+            </div>
+            <div class="card-body">    
                 <div class="name">${product.name}</div>
-            <div class="detail">
                 <div class="screen">Màn hình ${product.screen}</div>
                 <div class="backCamera">Cam sau ${product.backCamera}</div>
                 <div class="frontCamera">Cam trước ${product.frontCamera}</div>
-                <div class="description">
-                    <p>${product.description}</p>
-                </div>
+                <div class="description">${product.description}</div>
+            </div>
+            <div class="card-footer">
+                <div class="price">$${product.price}</div>
+                <button class="btn-add">Add cart</button>
             </div>
         </div>
-        <div class="add">
-            <div class="price">${product.price}</div>
-            <button class="btn-add">Add cart</button>
-        </div>
-    </div>
         `
     }, "")
     dom("#products").innerHTML = output;
