@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     box-sizing: border-box;
     padding: 0px;
@@ -5,7 +10,7 @@ body {
 }
 
 header {
-    background-color: blue;
+    background-color: rgb(26 148 255);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -68,9 +73,12 @@ header #number {
 #modal-container.show {
     opacity: 1;
     pointer-events: all;
+
 }
 
 #modal-container.show .modal {
+    position: relative;
+
     top: 70px;
 }
 
@@ -235,3 +243,48 @@ table {
     text-align: center;
     line-height: 21px;
 }
+
+#pay-Modal{
+    display: none;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-style: dashed;
+    border-color: rgb(26 148 255);
+    padding: 20px 40px;
+    width: 60vh;
+}
+
+#pay-Modal h3{
+    text-align: center;
+    color: rgb(26 148 255);
+}
+#pay-Modal .iconPay, .btnPay{
+    text-align: center;
+    margin: 10px 0;
+}
+#pay-Modal i{
+    font-size: 35px;
+    color: gold;
+}
+
+#pay-Modal button{
+    text-align: center;
+    padding: 5px 8px;
+    background-color: darkgoldenrod;
+    color: honeydew;
+}
+#pay-Modal h4{
+    color: black;
+    font-size: 24px;
+    text-align: center;
+    
+}
+#pay-Modal .modal-body{
+  text-align: center;
+  margin-top: 30px;
+}
+
+
