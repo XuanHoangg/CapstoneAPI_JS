@@ -6,26 +6,6 @@ function dom(element) {
 // lấy dữ liệu từ axios
 getProducts();
 function getProducts(searchType) {
-    getApiProducts(searchType)
-        .then((respone) => {
-            let productList = respone.data.map((product) => {
-                return new Product(
-                    product.id,
-                    product.name,
-                    product.price,
-                    product.screen,
-                    product.backCamera,
-                    product.frontCamera,
-                    product.image,
-                    product.description,
-                    product.type,
-                );
-            });
-            display(productList);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
     getFromLocalStorage();
     getApiProducts(searchType)
         .then((respone) => {
@@ -148,46 +128,6 @@ function countCartItem() {
 }
 // 3. Thêm sp
 dom("#products").addEventListener("click", (e) => {
-    // let idProduct = e.target.getAttribute("data-id");
-    // if (!idProduct) {
-    //     return false;
-    // }
-    // getApiProductById(idProduct)
-    //     .then((respone) => {
-    //         let smartPhone = respone.data.map((product) => {
-    //             return new Product(
-    //                 product.id,
-    //                 product.name,
-    //                 product.price,
-    //                 product.screen,
-    //                 product.backCamera,
-    //                 product.frontCamera,
-    //                 product.image,
-    //                 product.description,
-    //                 product.type,
-
-    //             );
-    //         });
-    //         // let ac = cartPhone.filter((phone) => phone.id === smartPhone[0].id)
-    //         // console.log(ac);
-    //         // for (let i = 0; i < cartPhone.length; i++) {
-    //         //     if (cartPhone[i].id === smartPhone[0].id) {
-    //         //         console.log("có");
-    //         //     }
-    //         // }
-    //         cartPhone.push(smartPhone[0]);
-    //         console.log(cartPhone);
-    //         if (cartPhone === []) {
-    //             dom(".text").style.display = "block"
-    //         } else {
-    //             dom(".text").style.display = "none"
-    //             dom("#number").innerHTML = cartPhone.length;
-    //             displayListPhone(cartPhone);
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
     let idProduct = e.target.getAttribute("data-id");
     if (!idProduct) {
         return false;
@@ -229,8 +169,7 @@ dom("#products").addEventListener("click", (e) => {
 });
 
 // 4. xoá sản phẩm
-dom("#cart-item").addEventListener("click", (e) => {
-    console.log(e.target);
+dom("#modal-close").addEventListener("click", (e) => {
     let id = e.target.getAttribute("data-id");
     let typeEl = e.target.getAttribute("data-type");
     if (typeEl === "delete") {
@@ -254,7 +193,8 @@ function totalCart() {
     let totalPrice = cartPhone.cart.reduce((total, item) => {
         return total + item.quantity * item.price;
     }, 0);
-    dom("#money").innerHTML = totalPrice;
+    dom("#money").innerHTML = totalPrice.toLocaleString();
+    dom("#moneyPay").innerHTML = totalPrice.toLocaleString();
 }
 
 // 6. tăng giảm số lượng giỏ hàng
@@ -264,7 +204,6 @@ function decrease(productId) {
     saveLocalStorage(cartPhone);
     displayListPhone(cartPhone);
     countCartItem();
-
 }
 //  + tăng
 function increase(productId) {
@@ -272,7 +211,6 @@ function increase(productId) {
     saveLocalStorage(cartPhone);
     displayListPhone(cartPhone);
     countCartItem();
-    dom("#modal-container").classList.add("show");
 }
 //=============================================================
 // A. Clean Cart
@@ -282,37 +220,36 @@ dom("#btn-garbage").addEventListener("click", () => {
     saveLocalStorage(cartPhone);
 });
 
+// B. Form thanh toán
 dom("#btn-purchase").addEventListener("click", () => {
-    if ((cartPhone.cart.length = 0)) {
-        return false;
+    if (cartPhone.cart.length === 0) {
+        false;
     } else {
-        pay();
+        dom("#pay-Modal").style.display = "block";
+        displayPay(cartPhone);
     }
 });
-function pay() {
-    let toPay = document.getElementsByClassName("#money").innerText;
-    let productNames = cartPhone.cart.map((item) => {
-        return `<span>${item.quantity} x ${item.name}</span>`;
-    });
-    let productPrice = cartPhone.cart.map((item) => {
-        return `<span>${item.quantity * item.price}</span>`;
-    });
-    return `
-  <div class='invoice'>
-    <div class='shipping-items'>
-      <div class='item-names'>${productNames.join("")}</div>
-      <div class='items-price'>${productPrice.join("+")}</div>
-    </div>
-  <hr>
-    <div class='payment'>
-      <em>payment</em>
+function displayPay(cartPhone) {
+    const html = cartPhone.cart.reduce((result, product) => {
+        return (
+            result +
+            `
       <div>
-        <p>total amount to be paid:</p><span class='pay'>₹ ${toPay}</span>
-      </div>
+    <tr>
+    <td><img src="${product.image}" width="40px" height="40px"></td>
+    <td>${product.name}</td>
+    <td>$${product.price} x ${product.quantity} = </td>
+    <td>${product.quantity * product.price}</td>
+    </tr>
     </div>
-    <div class='order'>
-      <button onclick='order()' class='btn-order btn'>Order Now</button>
-      <button onclick='buy(0)' class='btn-cancel btn'>Cancel</button>
-    </div>
-  </div>`;
+    `
+        );
+    }, "");
+    dom("#showCart").innerHTML = html;
+}
+function end() {
+    cartPhone.cart.length = 0;
+    displayListPhone(cartPhone);
+    saveLocalStorage(cartPhone);
+    dom("#pay-Modal").style.display = "none";
 }

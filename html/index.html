@@ -66,6 +66,139 @@
   </div>
   <div id="products"></div>
   <!-- <button class="btn-add">click me</button> -->
+  <div id="pay-Modal">
+    <div class="overplay"></div>
+    <div class="modal-header">
+      <h4>Giỏ hàng của bạn</h4>
+      <table id="showCart"></table>
+      <hr />
+      <h4>
+        Tổng tiền của bạn: $
+        <span id="moneyPay"></span>
+      </h4>
+    </div>
+    <div class="modal-body">
+      <h3>Giỏ hàng của bạn đã được thanh toán</h3>
+      <div class="iconPay">
+        <i class="fa-regular fa-circle-check"></i>
+      </div>
+      <div data-dimiss="pay-Modal"><button onclick="end()">Kết thúc</button></div>
+    </div>
+  </div>
+  <footer id="footer">
+    <div class="contact">
+      <div class="contact__content">
+        <div class="contact__Address">
+          <ul>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>1800-123-4567 <br>
+                +91 987-654-3210</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>phonestore@gmail.com <br>
+                services@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot" style="width: 42px;"></i>
+              <span>Address TP.HCM City</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-hand-point-right"></i>
+              <span>Page Admin: <a href="../admin/index.html"
+                  style="color:blue ;text-decoration: none; width: 50px;">Click to
+                  here</a></span>
+            </li>
+          </ul>
+
+        </div>
+        <div class="contact__Infomation">
+          <h3>Contact</h3>
+          <ul>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Home</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>About Us</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Services</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Team</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Blog</span>
+            </li>
+          </ul>
+        </div>
+        <div class="contact__Infomation">
+          <h3>Infomation</h3>
+          <ul>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Strategy & Research</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Web Development</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Web Solution</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Digital Markerting</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>App Design</span>
+            </li>
+          </ul>
+        </div>
+        <div class="contact__Infomation">
+          <h3>Support</h3>
+          <ul>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>FAQ</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span> Portfolio</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Privacy Policy</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Terms & Conditions</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-right"></i>
+              <span>Support</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <p>Copyright &copy 2022 <span> DexignZone </span>. All rights reserved.</p>
+      <div class="logo">
+        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
   <script>
     const cart = document.getElementById("cart");
     const btn_close = document.getElementById("btn-close");
@@ -76,11 +209,6 @@
     });
     btn_close.addEventListener("click", () => {
       modal_container.classList.remove("show");
-    });
-    modal_container.addEventListener("click", (e) => {
-      if (!modal_close.contains(e.target)) {
-        btn_close.click();
-      }
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

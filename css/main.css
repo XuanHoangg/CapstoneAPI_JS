@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     box-sizing: border-box;
     padding: 0px;
@@ -5,7 +11,7 @@ body {
 }
 
 header {
-    background-color: blue;
+    background-color: rgb(26 148 255);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -68,9 +74,12 @@ header #number {
 #modal-container.show {
     opacity: 1;
     pointer-events: all;
+
 }
 
 #modal-container.show .modal {
+    position: relative;
+
     top: 70px;
 }
 
@@ -91,7 +100,7 @@ header #number {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 55px;
+    padding: 10px 44px;
 }
 
 button#btn-close {
@@ -234,4 +243,153 @@ table {
     border: 50%;
     text-align: center;
     line-height: 21px;
+}
+
+#pay-Modal {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-style: dashed;
+    border-color: rgb(26 148 255);
+    padding: 20px 40px;
+    width: 60vh;
+    z-index: 1000;
+}
+
+#pay-Modal h3 {
+    text-align: center;
+    color: rgb(26 148 255);
+}
+
+#pay-Modal .iconPay,
+.btnPay {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#pay-Modal i {
+    font-size: 35px;
+    color: gold;
+}
+
+#pay-Modal button {
+    text-align: center;
+    padding: 5px 8px;
+    background-color: darkgoldenrod;
+    color: honeydew;
+}
+
+#pay-Modal h4 {
+    color: black;
+    font-size: 24px;
+    text-align: center;
+
+}
+
+#pay-Modal .modal-body {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#footer {
+    background-color: black;
+}
+
+.contact {
+    padding: 4rem 0;
+}
+
+.contact__content {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.contact__Address a img {
+    padding-bottom: 15px;
+}
+
+.contact__Address ul li i {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    margin-right: 10px;
+}
+
+.contact__Address ul li span {
+    color: white;
+}
+
+.contact__Address ul li {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-right: 40px;
+}
+
+.contact__Infomation {
+    /* margin-right: 150px; */
+    width: 30%;
+}
+
+.contact__Infomation h3 {
+    font-size: 30px;
+    color: white;
+    position: relative;
+}
+
+.contact__Infomation ul li i {
+    margin-right: 10px;
+}
+
+.contact__Infomation ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.contact__Infomation ul li {
+    color: #636363;
+    margin-bottom: 20px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.contact__Infomation ul li:hover {
+    color: white;
+}
+
+.note {
+    display: flex;
+    background-color: #1F343B;
+    justify-content: space-between;
+    padding: 1rem 9.5rem;
+}
+
+.note p {
+    color: white;
+}
+
+.note p span {
+    color: #F55F8D;
+}
+
+.note .logo a i {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    background-color: rgba(255, 255, 255, .1);
+    transition: 0.5s;
+}
+
+.note .logo a i:hover {
+    background-color: #F55F8D;
 }
