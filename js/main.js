@@ -8,15 +8,15 @@ function getProducts(searchType) {
         .then((respone) => {
             let productList = respone.data.map((product) => {
                 return new Product(
+                    product.id,
                     product.name,
                     product.price,
                     product.screen,
                     product.backCamera,
                     product.frontCamera,
                     product.image,
-                    product.discription,
+                    product.description,
                     product.type,
-                    product.id,
                 );
             });
             display(productList);
@@ -85,15 +85,16 @@ dom("#products").addEventListener("click", (e) => {
         .then((respone) => {
             let smartPhone = respone.data.map((product) => {
                 return new Product(
+                    product.id,
                     product.name,
                     product.price,
                     product.screen,
                     product.backCamera,
                     product.frontCamera,
                     product.image,
-                    product.discription,
+                    product.description,
                     product.type,
-                    product.id,
+
                 );
             });
             // let ac = cartPhone.filter((phone) => phone.id === smartPhone[0].id)

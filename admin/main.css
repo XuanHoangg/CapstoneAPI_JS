@@ -1,0 +1,62 @@
+body {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0x;
+    font-family: sans-serif;
+}
+
+header {
+    background: linear-gradient(to left top, blue, red);
+}
+
+.header {
+    position: relative;
+}
+
+.header img {
+    max-width: 300px;
+    max-height: 100px;
+}
+
+.header span {
+    position: absolute;
+    font-size: 50px;
+    top: 15px;
+    color: white;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .text {
+    font-size: 30px;
+    color: brown;
+}
+
+.content ul li {
+    transition: all 0.5s;
+}
+
+.content ul li:hover {
+    color: white;
+}
+
+.contact ul li {
+    list-style: none;
+    margin-left: -40px;
+}
+
+.info ul li {
+    list-style: none;
+    margin-left: -40px;
+}
+
+.media {
+    display: block;
+}
+
+.media i {
+    font-size: 30px;
+}
