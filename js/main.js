@@ -193,7 +193,8 @@ function totalCart() {
   let totalPrice = cartPhone.cart.reduce((total, item) => {
     return total + item.quantity * item.price;
   }, 0);
-  dom("#money").innerHTML = totalPrice;
+  dom("#money").innerHTML = totalPrice.toLocaleString();
+  dom("#moneyPay").innerHTML = totalPrice.toLocaleString();
 }
 
 // 6. tăng giảm số lượng giỏ hàng
@@ -219,37 +220,30 @@ dom("#btn-garbage").addEventListener("click", () => {
   saveLocalStorage(cartPhone);
 });
 
+// B. Form thanh toán
 dom("#btn-purchase").addEventListener("click", () => {
-  if ((cartPhone.cart.length = 0)) {
-    return false;
+  if (cartPhone.cart.length === 0) {
+    false;
   } else {
-    pay();
+    dom("#pay-Modal").style.display = "block";
+    displayPay(cartPhone);
   }
 });
-function pay() {
-  let toPay = document.getElementsByClassName("#money").innerText;
-  let productNames = cartPhone.cart.map((item) => {
-    return `<span>${item.quantity} x ${item.name}</span>`;
-  });
-  let productPrice = cartPhone.cart.map((item) => {
-    return `<span>${item.quantity * item.price}</span>`;
-  });
-  return `
-  <div class='invoice'>
-    <div class='shipping-items'>
-      <div class='item-names'>${productNames.join("")}</div>
-      <div class='items-price'>${productPrice.join("+")}</div>
-    </div>
-  <hr>
-    <div class='payment'>
-      <em>payment</em>
+function displayPay(cartPhone) {
+  const html = cartPhone.cart.reduce((result, product) => {
+    return (
+      result +
+      `
       <div>
-        <p>total amount to be paid:</p><span class='pay'>₹ ${toPay}</span>
-      </div>
+    <tr>
+    <td><img src="${product.image}" width="40px" height="40px"></td>
+    <td>${product.name}</td>
+    <td>$${product.price} x ${product.quantity} = </td>
+    <td>${product.quantity * product.price}</td>
+    </tr>
     </div>
-    <div class='order'>
-      <button onclick='order()' class='btn-order btn'>Order Now</button>
-      <button onclick='buy(0)' class='btn-cancel btn'>Cancel</button>
-    </div>
-  </div>`;
+    `
+    );
+  }, "");
+  dom("#showCart").innerHTML = html;
 }
