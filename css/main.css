@@ -159,14 +159,16 @@ button#btn-close {
 }
 
 #products {
-    padding: 50px;
+    padding-left: 65px;
+    margin-bottom: 30px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 55px;
+    gap: 20px;
 }
 
 #products .card {
-    width: 230px;
+    width: 80%;
     height: 350px;
     background: black;
     color: white;
@@ -303,7 +305,8 @@ table {
 }
 
 .contact__content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 80%;
     margin: 0 auto;
 }
@@ -335,7 +338,7 @@ table {
 
 .contact__Infomation {
     /* margin-right: 150px; */
-    width: 30%;
+    /* width: 30%; */
 }
 
 .contact__Infomation h3 {
@@ -392,4 +395,92 @@ table {
 
 .note .logo a i:hover {
     background-color: #F55F8D;
+}
+
+@media (max-width: 992px) {
+    #products {
+        padding-left: 38px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+    }
+
+    #chooseProducts {
+        width: 400px !important;
+    }
+}
+
+@media (max-width: 850px) {
+    #products {
+        padding-left: 38px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+
+    #chooseProducts {
+        width: 400px !important;
+    }
+
+    .contact__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .modal {
+        width: 70%;
+    }
+}
+
+@media (max-width: 650px) {
+    #products {
+        padding-left: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    #chooseProducts {
+        width: 300px !important;
+    }
+
+    .contact__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .modal {
+        height: 500px;
+    }
+
+    .note {
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 500px) {
+    #products {
+        padding-left: 41px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #products .card {
+        width: 60%;
+        margin-left: 60px;
+
+    }
+
+    #chooseProducts {
+        width: 200px !important;
+    }
+
+    .note {
+        padding: 1rem 0;
+    }
 }

@@ -60,3 +60,49 @@ header {
 .media i {
     font-size: 30px;
 }
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width:992px) {
+    .capnhat {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width:768px) {
+    #btn-add {
+        margin-top: 30px !important;
+    }
+}
+
+@media (max-width:500px) {
+    .header img {
+        width: 150px;
+        height: 100px;
+    }
+
+    .header span {
+        font-size: 50px;
+        top: 17px;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width:350px) {
+    .header img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .header span {
+        font-size: 40px;
+        top: 26px;
+    }
+}
